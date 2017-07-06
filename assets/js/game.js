@@ -1,24 +1,17 @@
-var random = Math.floor((Math.random()*(letters.length))); 
-console.log(random);
-var selectedWord = letters[random];
-console.log(selectedWord);
+var selectedWord = letters[Math.floor((Math.random()*(letters.length)))];
 var gallery = [];
 var hang=0;
 var b=6;
 
-window.onload=document.getElementById("chance").innerHTML="Chances left "+6;
-console.log(selectedWord[0]);
-
+window.onload=document.getElementById("chance").innerHTML="Chances left: "+ 6;
 
 for (var i = 0; i < selectedWord[0].length; i++) {
 	gallery.push("_" + ' ');
 }
 
-
 function myfunction() {
 	var x = document.getElementById('hint');
-	if(x.style.display=='block')
-	{
+	if(x.style.display=='block') {
 		alert("Its already displayed !!!");
 	}
 	else if(x.style.display=='none'){
