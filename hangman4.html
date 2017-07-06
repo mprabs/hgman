@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Play</title>
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap/bootstrap.min.css">
+</head>
+<style type="text/css">
+	a
+	{
+		align-content: center;
+	}
+	#feri
+	{
+		border-style:solid;
+		border:10px 10px 10px 10px;
+		border-radius:40px;
+		padding-left: 5%;
+		border-color: black;
+		font-family: forte;
+		font-size: 180%;
+	}
+</style>
+<body>
+	<nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="hangman4.html">HANGMAN</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="hangman4.html">Home</a></li
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	<div class="container-fluid">
+		<div class="jumbotron">
+			<h1> HANGMAN <small>Lets Play ! </small> </h1>
+		</div>
+		<h3>Now, guess this word.</h3>
+		<div class="row">
+			<div class="col-md-6"> 
+				<img src="hangman0.png" id="hangman"> <br><br>
+				<p id="feri"> <b> Wrong Letters: </b> </p>
+				<h4 id="chance"><span class="badge">b</span></h4>
+			</div>
+			<div class="col-md-6"> 
+				<div class="input-group">
+					<h4 id="hint" style="display: none;"></h4>
+					<h2 id="guesss"></h2>
+					<input id="naya" placeholder="Enter Letters" class="form-control" maxlength="1">
+					<div class="btn-group">
+						<br><button class="btn btn-danger" role="toolbar" onClick="myfunction()">Hint</button><br><br>
+						Note : Clicking on hint decreases your incorrect words limit to 5. <br><br>
+						<button type="button" role="toolbar" class="btn btn-success" onClick="checker()">Guess</button> 
+						<button class="btn btn-danger" role="toolbar" type="button" onClick="location.reload()">Restart</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="letters.js"></script>
+<script src="new.js"></script>
+</body>
+<div id="result"></div>
+</html>
