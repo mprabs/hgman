@@ -95,7 +95,7 @@ function restartGame() {
 	document.getElementById('hint').style.display = 'none';
 	document.getElementById('inputLetters').value = "";	
 	document.getElementById('wrong-letters').innerHTML = "Wrong Letters: ";
-	document.getElementById('chance').innerHTML = "";
+	document.getElementById('chance').innerHTML = "Chances Left: " + remainingChances;
 }
 
 window.onload = printLines;
