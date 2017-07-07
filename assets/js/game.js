@@ -1,88 +1,101 @@
 var selectedWord = letters[Math.floor((Math.random()*(letters.length)))];
 var gallery = [];
-var hang=0;
-var b=6;
+var mistakes = 0;
+var gameOver = false;
+var remainingChances = 6;
 
-window.onload=document.getElementById("chance").innerHTML="Chances left: "+ 6;
-
-for (var i = 0; i < selectedWord[0].length; i++) {
-	gallery.push("_" + ' ');
-}
-
-function myfunction() {
-	var x = document.getElementById('hint');
-	if(x.style.display=='block') {
-		alert("Its already displayed !!!");
-	}
-	else if(x.style.display=='none'){
-		x.style.display='block';
-		hang++;
-		var b=6-hang;
-		document.getElementById("chance").innerHTML="Chances left "+b;
-	  	console.log(x);
+function initGallery() {
+	for(var i = 0; i < selectedWord[0].length; i++) {
+		gallery.push("_" + ' ');
 	}
 }
 
-document.getElementById("hint").innerHTML = selectedWord[1].toUpperCase();
+initGallery();
 
-function printgallery() {
+function showHint() {
+	var hint = document.getElementById('hint');
+	if(hint.style.display == 'block') {
+		alert("It's already being displayed");
+	} else {
+		hint.style.display = 'block';
+		document.getElementById("hint").innerHTML= selectedWord[1].toUpperCase();
+		document.getElementById("chance").innerHTML="Chances Left: " + 5;
+		mistakes++;
+	}
+}
+
+function printLines() {
+	document.getElementById("guesss").innerHTML = "";
 	var guess = document.getElementById("guesss");
-	guess.innerHTML = "";
 	for (var i = 0; i < gallery.length; i++) 	{
-		var another = document.createTextNode(gallery[i]);
-		guesss.appendChild(another);
+		guesss.appendChild(document.createTextNode(gallery[i]));
 	}
 }
 
-var checker = function() {
-	var guessElement = document.getElementById('naya');
-	var user_input = guessElement.value;
-	if(user_input=="") alert("First fill in the text field");
-	user_input = user_input.toLowerCase();
-	for (var i = 0; i < selectedWord[0].length; i++) {
-		if(selectedWord[0][i] == user_input) {
-			gallery[i] = user_input + " ";
-			var natija = true;
+function checker() {
+	var match = false;
+	var guessElement = document.getElementById('inputLetters');
+	var user_input = guessElement.value.toLowerCase();
+	if(user_input=="") {
+		alert("First fill in the text field");
+	} else {		
+		for (var i = 0; i < selectedWord[0].length; i++) {
+			if(selectedWord[0][i] == user_input) {
+				gallery[i] = user_input + " ";
+				match = true;
+			}
 		}
 	}
+
+	document.getElementById('inputLetters').value = "";	
+	printLines();
 	
-	guessElement.innerHTML=""; 
-	printgallery();
-
-	document.getElementById('naya').value = "";
-	if(!natija && user_input!="") {
-		var feri = document.getElementById("feri");
-		var another = document.createTextNode(" " + user_input.toLowerCase());
-		feri.appendChild(another); 
-	 	hang++;
-	 	var b=6-hang;
-		document.getElementById("chance").innerHTML="Chances Left " + b;
-	 	console.log(chance);
+	if(!match) {
+	 	mistakes++;
+		var wrongLetters = document.getElementById("wrong-letters");
+		var another = document.createTextNode(user_input.toLowerCase() + ', ');
+		wrongLetters.appendChild(another);
+	 	remainingChances = 6 - mistakes;
+		document.getElementById("chance").innerHTML="Chances Left: " + remainingChances;
 		var hangman = document.getElementById("hangman");
-    	hangman.src = "http://www.writteninpencil.de/Projekte/Hangman/hangman" + hang + ".png";
+    	hangman.src = "assets/img/hangman" + mistakes + ".png";
 	}
+	checkGameOver();
+}
 
-	var gameOver = false;
-	let match = 0;
+function checkGameOver() {
+	let matchedLetters = 0;
 	for (var i = 0; i < selectedWord[0].length; i++) {
 		if(selectedWord[0][i] == gallery[i].trim())
-			match++;
+			matchedLetters++;
 	}
 
-	if(match == selectedWord[0].length)
+	if(matchedLetters == selectedWord[0].length)
 		gameOver = true;
 	
 	if(gameOver)  {
 		window.alert("You win!");
 	}
 	
-	if (b==0)	{
+	if (remainingChances == 0)	{
 		alert("Uh...I guess you're dead now.");
-		//location.reload();
-		document.getElementById('guesss').innerHTML=selectedWord[0];
-		var x = document.getElementById('hint');
-    	x.style.display = 'block';
+		document.getElementById('inputLetters').value = selectedWord[0];
+		document.getElementById('hint').innerHTML = selectedWord[1];
 	}
 }
 
-window.onload = printgallery;
+function restartGame() {
+	gallery = [];
+	selectedWord = letters[Math.floor((Math.random()*(letters.length)))];
+	mistakes = 0;
+	gameOver = false;
+	remainingChances = 6;
+	initGallery();
+	printLines();
+	document.getElementById('hint').style.display = 'none';
+	document.getElementById('inputLetters').value = "";	
+	document.getElementById('wrong-letters').innerHTML = "Wrong Letters: ";
+	document.getElementById('chance').innerHTML = "";
+}
+
+window.onload = printLines;
