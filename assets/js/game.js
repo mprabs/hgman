@@ -127,7 +127,7 @@ function checkGameOver() {
 	}
 	
 	if (remainingChances == 0)	{
-		alert("Uh...I guess you're dead now.");
+		alert("You are DEAD !!");
 		document.getElementById('guesss').innerHTML = selectedWord[0];
 		hint.style.display = 'block';
 		document.getElementById('hint').innerHTML = selectedWord[1];
