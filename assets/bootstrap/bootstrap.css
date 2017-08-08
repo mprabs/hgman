@@ -2241,8 +2241,8 @@ pre code {
 }
 
 .form-control {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: 20%;
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
   line-height: 1.25;
@@ -2258,6 +2258,7 @@ pre code {
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+
 }
 
 .form-control::-ms-expand {

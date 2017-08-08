@@ -1,12 +1,19 @@
+// Aaitey
+// Player Name rakhna laageko ni vayena
+// Level associate garna laageko ni vayena
+// Tanaab
+
+
 var selectedWord = letters[Math.floor((Math.random()*(letters.length)))];
 var gallery = [];
 var words = new Array();
 words[0]="";
 var mistakes = 0;
 var gameOver = false;
-var remainingChances = 6;
+var remainingChances = 7;
 var remark= document.getElementById('remarks');
 let count=0,i=0;
+var matchedLetters=0;
 
 document.getElementById("timer").style.display='none';
 
@@ -18,6 +25,9 @@ function initGallery() {
 
 function timer()
 {
+	if(gameOver==false)
+	{
+	document.getElementById("timer").style.display='block';
 	let limit=30;
 	var timing=setInterval(function(){
 		document.getElementById("timer").innerHTML="Time Left = " + limit + " seconds.";
@@ -25,24 +35,29 @@ function timer()
 		if(limit<=0){
 			document.getElementById("timer").innerHTML="Time finished";
 			alert("Time finished. The game will restart now.");
-			restartGame();
+			gameOver=true;
+			checkGameOver();
 		}
 	},1000);
+	}
+	else
+		clearInterval(timing);
 }
 
 initGallery();
 
 function showHint() {
-	document.getElementById("timer").style.display='block';
+	// document.getElementById("timer").style.display='block';
 	var hint = document.getElementById('hint');
 	if(hint.style.display == 'block') {
 		alert("It's already being displayed");
 	}
 	else {
-		timer();
+		// timer();
 		hint.style.display = 'block';
 		document.getElementById("hint").innerHTML= selectedWord[1].toUpperCase();
-		document.getElementById("chance").innerHTML="Chances Left: " + 5;
+		var chancesleft=remainingChances-1;
+		document.getElementById("chance").innerHTML="Chances Left: " + chancesleft;
 		mistakes++;
 		var hangman = document.getElementById("hangman");
     	hangman.src = "assets/img/hangman" + mistakes + ".png";
@@ -70,13 +85,18 @@ function checker() {
 		alert("Game finished. Try restarting.");
 		document.getElementById('inputLetters').value = "";	
 		gameOver=true;
-		checkGameOver();
+		restartGame();
 	}
 	else {		
 		for (var i = 0; i < selectedWord[0].length; i++) {
 			if(selectedWord[0][i] == user_input) {
 				gallery[i] = user_input + " ";
 				match = true;
+				console.log("Matched"+matchedLetters);
+				if(selectedWord[0].length - matchedLetters <=4)
+				{
+					timer();
+				}
 				document.getElementById("remarks").innerHTML="Good..";
 			}
 		}
@@ -109,7 +129,7 @@ function checker() {
 }
 
 function checkGameOver() {
-	let matchedLetters = 0;
+	matchedLetters = 0;
 	for (var i = 0; i < selectedWord[0].length; i++) {
 		if(selectedWord[0][i] == gallery[i].trim())
 			matchedLetters++;
@@ -124,14 +144,18 @@ function checkGameOver() {
 		document.getElementById('hint').innerHTML = selectedWord[1];
 		document.getElementById('guesss').innerHTML = selectedWord[0];
 	 	document.getElementById("remarks").innerHTML="AWESOME !!!";
+	 	resetInterval(timing);
+		document.getElementById("timer").innerHTML='DOne in' + limit;
+
 	}
 	
 	if (remainingChances == 0)	{
-		alert("You are DEAD !!");
+		alert("Uh...I guess you're dead now.");
 		document.getElementById('guesss').innerHTML = selectedWord[0];
 		hint.style.display = 'block';
 		document.getElementById('hint').innerHTML = selectedWord[1];
 	 	document.getElementById("remarks").innerHTML="Oops...Well tried !!";
+		document.getElementById("timer").style.display='none';
 	}
 }
 
