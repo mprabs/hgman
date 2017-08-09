@@ -27,7 +27,9 @@
 	<nav class="navbar navbar-default">
       	<div class="container-fluid">
         	<div class="navbar-header">
-          		<a class="navbar-brand" href="hangman.html">HANGMAN</a>
+          		<a class="navbar-brand" href="hangman.html">
+          			HANGMAN
+          		</a>
         	</div>
         	<div id="navbar" class="collapse navbar-collapse">
 	          	<ul class="nav navbar-nav">
@@ -46,22 +48,23 @@
 		</div>
 		<h3>Guess The Word.</h3>
 		<div class="row">
-			<div class="col-md-6"> 
+			<div class="col-md-6">
 				<h1 id="remarks"></h1>
-				<img src="assets/img/hangman0.png" id="hangman"> <br><br>
-				<b><p id="wrong-letters">Wrong Letters:  </p></b>
 				<h4 id="chance">Chances left: 6</h4>
+				<img src="assets/img/hangman0.png" id="hangman"> <br>				
+				<b><p id="wrong-letters">Wrong Letters:  </p></b>
 			</div>
 			<div class="col-md-6"> 
 				<div class="input-group"><br>
-					<h4 id="hint" style="display: none;"></h4>
-					<h2 id="guesss"></h2>
-					<input id="inputLetters" style=" display: inline;" placeholder="Enter a Letter" class="form-control" maxlength="1">
-					<button role="toolbar" style="float: left;" class="btn btn-success" onClick="checker()">Guess</button> <br>
+					<h4 id="hint"></h4>
+					<h3 id="guesss"></h3>
+					<input id="inputLetters" style=" display: inline;" placeholder="Enter a Letter" class="form-control" maxlength="1"><br><br>
+					<button style="float: left;" class="btn btn-success" onClick="checker()">Guess</button>
+					<button id="auto-guess" style="float: right;" class="btn btn-success" onclick="autoguess()"> Auto Guess </button><br><br>
 					<div class="btn-group" style=" float: center;"">
 						<br><button class="btn btn-danger" id="enterletter" role="toolbar" onClick="showHint()">Hint</button>
 						<br><br>
-						<p style="float:left;">Note : Clicking on hint decreases your incorrect words limit by 1. </p><br> <br>
+						<p>Note : Clicking on hint decreases your incorrect words limit by 1. </p>
 						<button class="btn btn-danger" type="button" onClick="restartGame()">Restart</button>
 					</div>
 				</div>
@@ -69,7 +72,6 @@
 		</div>
 	</div>
 	<!-- JavaScript -->
-	<script type="text/javascript" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="assets/js/letters.js"></script>
 	<script src="assets/js/game.js"></script>
 </body>
