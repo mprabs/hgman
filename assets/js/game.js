@@ -149,25 +149,25 @@ function checker() {
 					timer();
 				}
 				document.getElementById("remarks").innerHTML="Aww...";
-				for (var i = 1; i < count; i++) {
-					if(words[i]==user_input){
-						alert("DUPLICATE WORD !!");
-						break;
-					}
-				}
-				words[i]=user_input;
-				i++;
-				// console.log("Word is" + words[i]);
-				// for (var i = 1; i < selectedWord[0].length+1; i++) {
+				// for (var i = 1; i < count; i++) {
 				// 	if(words[i]==user_input){
-				// 		autoguess();
+				// 		alert("DUPLICATE WORD !!");
+				// 		break;
 				// 	}
 				// }
-				// var temp;
-				// temp=user_input;
-				// user_input=words[i];
-				// words[i]=temp;
+				// words[i]=user_input;
 				// i++;
+				console.log("Word is" + words[i]);
+				for (var i = 1; i < selectedWord[0].length+1; i++) {
+					if(words[i]==user_input){
+						autoguess();
+					}
+				}
+				var temp;
+				temp=user_input;
+				user_input=words[i];
+				words[i]=temp;
+				i++;
 			}
 		}
 		count++;
