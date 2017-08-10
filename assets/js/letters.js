@@ -1,4 +1,4 @@
-var letters = [
+var easy = [
 	['hangman','Best game in the world','1'],
 	['javascript', 'Programming language','2'],
  	['kathmandu', 'Most polluted city','2'],
@@ -27,6 +27,14 @@ var letters = [
 	['plagarism','Human property','3'],
 	['interstellar','A movie','3'],
 	['bluestacks','PC app','3']
+]
+
+var medium = [
+	['nepal', 'country', '1']	
+]
+
+var hard = [
+	['america' , 'country']
 ]
 
 

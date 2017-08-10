@@ -1,4 +1,4 @@
-var selectedWord = letters[Math.floor((Math.random()*(letters.length)))];
+var selectedWord;
 var gallery = [];
 var words = [];
 var mistakes = 0;
@@ -15,6 +15,25 @@ document.getElementById("remarks").innerHTML="Lets play the game !!";
 document.getElementById('hint').innerHTML ="Wanna try without HINTS??";
 document.getElementById("timer").style.display='none';
 
+function getlevel() {
+	var x = document.getElementById("level").value;
+	switch(x) {
+		case 'Easy':
+			selectedWord = easy[Math.floor((Math.random()*(easy.length)))];
+			break;
+
+		case 'Medium':
+			selectedWord = medium[Math.floor((Math.random()*(medium.length)))];
+			break;
+
+		case 'Hard':
+			selectedWord = hard[Math.floor((Math.random()*(medium.length)))];
+			break;
+	}
+	initGallery();
+	printLines();
+}
+
 function autoguess() {
 	var theword = selectedWord[0][Math.floor((Math.random()*(selectedWord[0].length)))];
 	console.log(Math.floor((Math.random()*(selectedWord[0].length))));
@@ -26,12 +45,11 @@ function autoguess() {
 }
 
 function initGallery() {
+	gallery = [];
 	for(var i = 0; i < selectedWord[0].length; i++) {
 		gallery.push("_" + ' ');
 	}
 }
-
-initGallery();
 
 function timer()
 {
@@ -75,7 +93,7 @@ function printLines() {
 }
 
 function checker() {
-	if(autoguessvalue==false){
+	if(!autoguessvalue){
 		var match = false;
 		var guessElement = document.getElementById('inputLetters');
 		var user_input = guessElement.value.toLowerCase();
@@ -158,8 +176,9 @@ function checker() {
 				// words[i]=user_input;
 				// i++;
 				console.log("Word is" + words[i]);
-				for (var i = 1; i < selectedWord[0].length+1; i++) {
-					if(words[i]==user_input){
+				for (var j = 1; j < selectedWord[0].length+1; j++) {
+					if(words[j]==user_input){
+						console.log(user_input)
 						autoguess();
 					}
 				}

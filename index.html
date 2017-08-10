@@ -44,12 +44,21 @@
 	<div class="container-fluid">
 		<div class="jumbotron">
 			<h1><b>HANGMAN<b> <small>Lets Play !</small></h1>
-			<h4 id="timer" style="float:right;"></h4> 
+			<div class='inline'>
+				<select id='level'>
+					<option>Easy</option>
+					<option>Medium</option>
+					<option>Hard</option>
+				</select>
+				<button onclick="getlevel()">Play</button>
+			</div>
+			<h4 id="timer" style="float:right;"></h4>
 		</div>
 		<h3>Guess The Word.</h3>
 		<div class="row">
 			<div class="col-md-6">
 				<h1 id="remarks"></h1>
+
 				<h4 id="chance">Chances left: 6</h4>
 				<img src="assets/img/hangman0.png" id="hangman"> <br>				
 				<b><p id="wrong-letters">Wrong Letters:  </p></b>
