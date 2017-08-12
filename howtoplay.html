@@ -10,7 +10,7 @@
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 	    <div class="navbar-header">
-	    	<a class="navbar-brand" href="hangman.html">HANGMAN</a>
+	    	<a class="navbar-brand" href="hangman.html" style="font-family: forte; font-size: 20px; font-style: bold;">HANGMAN</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
         	<ul class="nav navbar-nav">
@@ -22,17 +22,38 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid">
+<div class="container-fluid" style="text-align: center;">
 	<div class="jumbotron">
-		<b style="font-size: 25px;"> Instructions: </b>
-		<ul>
-			<li> No. of dashes shows the no. of letters in the words. </li>
-			<li> Enter a letter of your choice in the letter box & click on GUESS. </li>
-			<li> The total limit of uncorrect letters is 6. </li>
-			<li> Clicking on HINT displays a hint of the word.<br> But it decreases your incorrect limit of letters by 1 & also gives you a 30 SECOND time limit to solve. </li>
-			<br> <br> <br>
+		<b style="font-size: 25px;"> Instructions: </b><br><hr>
+		<ul style="font-size :15px; font-style: bold; font-family: forte;">
+			<div class="col-md-6" style="text-align: left;">
+				<li>
+				Select the difficulty level  of the game.<br>
+				<img src="assets/img/level1.png">
+				</li>
+				<br>
+
+				<li> No. of dashes shows the no. of letters in the words. <br> 
+				<img src="assets/img/first.png">
+				</li>
+				<br>
+			</div>
+			<div class="col-md-6" style="text-align: left;">
+				<li> Enter a letter of your choice in the letter box & click on GUESS. </li>
+			<br>
+			<li> The total limit of uncorrect letters is 6. <br></li>
+			<br>
+			<li> You can autoguess a word directly but it decreases your chances. Twist is, you may not even get a word but your chance will decrease. CLICK AT YOUR OWN RISK !! <br>
+			<img src="assets/img/hints.png">
+			</li>
+			<br>
+			<li> Clicking on HINT displays a hint of the word.<br> But it decreases your incorrect limit of letters by 1. <br> 
+			<!-- <img src="assets/img/hints.png"> -->
+			</li><br>
+			<li> You can restart the game anytime.</li>
+			</div>
 		</ul>
-			<b>ENJOY THE GAME !! </b>
+		<b style="text-align: center;">ENJOY THE GAME !! </b>
 	</div>
 </body>
 </html>
